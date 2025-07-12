@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head><title>Olympiad DB</title></head>
+<head>
+  <title>Olympiad DB</title>
+</head>
 <body>
-  <h1>Add Problem</h1>
+  <h1>All Problems</h1>
+
+  <ul>
+    {% for problem in problems %}
+      <li><strong>[{{ problem.id }}]</strong> {{ problem.statement }}</li>
+    {% else %}
+      <li>No problems yet!</li>
+    {% endfor %}
+  </ul>
+
+  <hr>
+
+  <h2>Add a New Problem</h2>
   <form action="/add" method="post">
-    <textarea name="statement" rows="5" cols="60"></textarea><br/>
+    <textarea name="statement" rows="5" cols="60" placeholder="Problem statement in LaTeX"></textarea><br/>
     <button type="submit">Submit</button>
   </form>
 </body>
